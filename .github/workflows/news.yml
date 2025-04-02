@@ -20,7 +20,7 @@ jobs:
 
       - name: ライブラリをインストール
         run: |
-          pip install requests beautifulsoup4 pytz
+          pip install requests beautifulsoup4 pytz lxml
 
       - name: スクリプトを実行
         run: python news_scraper.py
