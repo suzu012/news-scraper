@@ -1,0 +1,26 @@
+name: Auto News Scraper
+
+on:
+  schedule:
+    - cron: '0 21 * * *'  # 毎日日本時間の朝6:00（UTCで21:00）
+  workflow_dispatch:     # 手動実行もできる
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: リポジトリをチェックアウト
+        uses: actions/checkout@v3
+
+      - name: Python をセットアップ
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: ライブラリをインストール
+        run: |
+          pip install requests beautifulsoup4 pytz
+
+      - name: スクリプトを実行
+        run: python news_scraper.py
