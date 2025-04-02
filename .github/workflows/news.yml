@@ -24,3 +24,12 @@ jobs:
 
       - name: スクリプトを実行
         run: python news_scraper.py
+        
+      - name: 生成したCSVをGitHubに保存
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
+          git add *.csv
+          git commit -m "📝 CSVファイルを自動追加"
+          git push
+
